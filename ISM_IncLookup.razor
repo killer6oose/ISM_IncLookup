@@ -1,11 +1,11 @@
-@page "/ticketlookup"
+@page "/ism_inclookup"
 
-<h3>Ticket Lookup</h3>
+<h3>ISM Incident Lookup</h3>
 
 <div>
-    <label for="ticketNumber">Enter Ticket Number:</label>
-    <input id="ticketNumber" @bind="ticketNumber" />
-    <button @onclick="LookupTicket">Submit</button>
+    <label for="incidentNumber">Enter Incident Number:</label>
+    <input id="incidentNumber" @bind="incidentNumber" />
+    <button @onclick="LookupIncident">Submit</button>
 </div>
 
 @if (attachments != null && attachments.Any())
@@ -23,32 +23,32 @@
 }
 else if (lookupComplete)
 {
-    <p>No attachments found for this ticket.</p>
+    <p>No attachments found for this incident.</p>
 }
 
 @code {
     // ----------------------------------------------------------------------------
-    // File: TicketLookup.razor
+    // File: ISM_IncLookup.razor
     // Author: Andrew Hatton
     // Date: September 30, 2023
-    // Description: Blazor component for ticket lookup and attachment display.
+    // Description: Blazor component for ISM incident lookup and attachment display.
     // ----------------------------------------------------------------------------
     
-    private string ticketNumber;
+    private string incidentNumber;
     private List<Attachment> attachments;
     private bool lookupComplete;
 
-    private async Task LookupTicket()
+    private async Task LookupIncident()
     {
         // Simulate database lookup with a delay (replace with actual database query)
         await Task.Delay(1000);
-        attachments = GetAttachmentsFromDatabase(ticketNumber);
+        attachments = GetAttachmentsFromDatabase(incidentNumber);
         lookupComplete = true;
     }
 
-    private List<Attachment> GetAttachmentsFromDatabase(string ticketNumber)
+    private List<Attachment> GetAttachmentsFromDatabase(string incidentNumber)
     {
-        // Replace this with your database query to get attachments for the ticket number
+        // Replace this with your database query to get attachments for the incident number
         // For this example, we simulate retrieving attachments.
         return new List<Attachment>
         {
