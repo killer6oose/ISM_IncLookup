@@ -1,0 +1,14 @@
+@inherits LayoutComponentBase
+
+<!-- Your layout structure, including header, sidebar, and other common elements -->
+
+<div class="content">
+    <AuthorizeView Policy="RequireOktaLogin">
+        <Authorized>
+            @Body
+        </Authorized>
+        <NotAuthorized>
+            <p>You must be logged in to access this page.</p>
+        </NotAuthorized>
+    </AuthorizeView>
+</div>
