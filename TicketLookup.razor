@@ -1,0 +1,70 @@
+@page "/ticketlookup"
+
+<h3>Ticket Lookup</h3>
+
+<div>
+    <label for="ticketNumber">Enter Ticket Number:</label>
+    <input id="ticketNumber" @bind="ticketNumber" />
+    <button @onclick="LookupTicket">Submit</button>
+</div>
+
+@if (attachments != null && attachments.Any())
+{
+    <h4>Attachments:</h4>
+    <ul>
+        @foreach (var attachment in attachments)
+        {
+            <li>
+                <a href="@attachment.FilePath" download>@attachment.FileName</a>
+            </li>
+        }
+    </ul>
+    <button @onclick="DownloadAllAttachments">Download All Attachments</button>
+}
+else if (lookupComplete)
+{
+    <p>No attachments found for this ticket.</p>
+}
+
+@code {
+    // ----------------------------------------------------------------------------
+    // File: TicketLookup.razor
+    // Author: Andrew Hatton
+    // Date: September 30, 2023
+    // Description: Blazor component for ticket lookup and attachment display.
+    // ----------------------------------------------------------------------------
+    
+    private string ticketNumber;
+    private List<Attachment> attachments;
+    private bool lookupComplete;
+
+    private async Task LookupTicket()
+    {
+        // Simulate database lookup with a delay (replace with actual database query)
+        await Task.Delay(1000);
+        attachments = GetAttachmentsFromDatabase(ticketNumber);
+        lookupComplete = true;
+    }
+
+    private List<Attachment> GetAttachmentsFromDatabase(string ticketNumber)
+    {
+        // Replace this with your database query to get attachments for the ticket number
+        // For this example, we simulate retrieving attachments.
+        return new List<Attachment>
+        {
+            new Attachment { FileName = "Attachment1.pdf", FilePath = "attachments/attachment1.pdf" },
+            new Attachment { FileName = "Attachment2.docx", FilePath = "attachments/attachment2.docx" }
+        };
+    }
+
+    private async Task DownloadAllAttachments()
+    {
+        foreach (var attachment in attachments)
+        {
+            // Simulate downloading each attachment (replace with actual download logic)
+            await Task.Delay(100); // Delay to simulate download
+            // Provide the file for download
+            await JSRuntime.InvokeVoidAsync("downloadFile", attachment.FileName, attachment.FilePath);
+        }
+    }
+}
