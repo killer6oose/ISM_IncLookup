@@ -14,7 +14,7 @@ Before you begin, ensure you have the following in place:
 1. Clone this repository to your local machine:
 
    ```bash
-   git clone https://github.com/killer6oose/ISM_WebApp_IncLookup.git
+   git clone https://github.com/killer6oose/ISM_IncLookup.git
    ```
 
 2. Navigate to the project directory:
@@ -47,7 +47,7 @@ Before you begin, ensure you have the following in place:
 
 ## Issues and Contributions
 
-If you encounter any issues or have suggestions for improvements, please [open an issue](https://github.com/killer6oose/ISM_WebApp_IncLookup/issues) on this repository. Contributions through pull requests are also welcome.
+If you encounter any issues or have suggestions for improvements, please [open an issue](https://github.com/killer6oose/ISM_IncLookup/issues) on this repository. Contributions through pull requests are also welcome.
 
 ## License
 
